@@ -1712,7 +1712,7 @@ ngx_stream_variable_dns_record_context(ngx_stream_session_t *s,
 
     question = (ngx_dns_question_t *)part->elts;
     p = context.data;
-    ngx_strlow(question->name.data,question->name.data,question->name.len)
+    ngx_strlow(question->name.data,question->name.data,question->name.len);
     p = ngx_cpymem(p, question->name.data, question->name.len);
 
     context.len = p - context.data;
