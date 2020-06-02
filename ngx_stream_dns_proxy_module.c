@@ -7,6 +7,7 @@
 #include <ngx_config.h>
 #include <ngx_core.h>
 #include <ngx_stream.h>
+#include <ngx_string.h>
 
 #include "ngx_stream_dns_proxy_module.h"
 #include "ngx_dns_type.h"
@@ -1711,6 +1712,7 @@ ngx_stream_variable_dns_record_context(ngx_stream_session_t *s,
 
     question = (ngx_dns_question_t *)part->elts;
     p = context.data;
+    ngx_strlow(question->name.data,question->name.data,question->name.len)
     p = ngx_cpymem(p, question->name.data, question->name.len);
 
     context.len = p - context.data;
